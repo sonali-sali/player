@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 import csv
 import ast
-from ...models import *
+from ...models import City,Class,Country,State,Team,Twitter,Player,Position,Offer,HighSchool
 
 
 class Command(BaseCommand):
@@ -67,7 +67,7 @@ class Command(BaseCommand):
                         except Exception:
                             pass
 
-                    except:
+                    except Exception:
                         try:
                             Interest.objects.get_or_create(commited=word[9], recruited_by=word[10])
                         except Exception:

@@ -2,7 +2,7 @@
 import json
 from django.core.management.base import BaseCommand
 from ...models import Class, Interest, Position,Offer,HighSchool,City, State, Team, Player
-from ...teamwise_scrap import *
+from ...teamwise_scrap import get_teamwise_player_attributes
 import ast
 
 class Command(BaseCommand):
@@ -30,7 +30,6 @@ class Command(BaseCommand):
                 time.sleep(5)
                 driver.find_element(By.XPATH,"/html/body/section[1]/section/div/section[2]/section/section/section/div/div[1]/ul[2]/li/ul/li[2]/a").click()
                 player = get_teamwise_player_attributes(driver)
-                # player_list = ast.literal_eval(player)
                 values = []
                 for player_datas in player:
                     values.append(player[player_datas])

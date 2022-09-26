@@ -1,10 +1,11 @@
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import *
+from .serializers import UserSerializer,LoginSerializer,TwitterSerializer,TeamSerializer,InterestSerializer,RegisterSerializer,CountrySerializer,ClassSerializer,CitySerializer,HighschoolSerializer,PlayerSerializer,PositionSerializer,StateSerializer,OfferSerializer
 from django.contrib.auth import login
-from .models import Team,State,City,Interest,Player,Position,Class,Country,HighSchool
+from .models import Team,State,City,Interest,Player,Position,Class,Country,HighSchool,Offer,Twitter
 from rest_framework.permissions import AllowAny
 from rest_framework import generics
+from django.contrib.auth.models import User
 
 
 class RegisterAPI(generics.GenericAPIView):

@@ -22,7 +22,7 @@ class TestSetUp(APITestCase):
         self.classs = Class.objects.create(id=1,class_year='2023')
         self.offer = Offer.objects.create()
         team=Team.objects.get(name='albam')
-        self.offer.team_id.add(team.id)
+        self.offer.teams.add(team.id)
         self.position = Position.objects.create(id=1,position='edge')
         self.interest = Interest.objects.create(id=1,commited='commited',
                                                 team_id=self.team,recruited_by='kk,jj')
@@ -716,7 +716,7 @@ class OfferTestcase(TestSetUp):
         """defining function to check testcases for get Offer data for authenticated user"""
         user = User.objects.get(username='aru')
         self.client.force_authenticate(user=user)
-        offer = Offer.objects.get(team_id=1)
+        offer = Offer.objects.get(teams=1)
         response = self.client.get(reverse('offerdetail', args=[offer.id]))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -724,7 +724,7 @@ class OfferTestcase(TestSetUp):
         """defining function to check testcases for update Offer data for authenticated user"""
         user = User.objects.get(username='aru')
         self.client.force_authenticate(user=user)
-        offer = Offer.objects.get(team_id=1)
+        offer = Offer.objects.get(teams=1)
         response = self.client.patch(reverse('offerdetail', args=[offer.id]))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -732,7 +732,7 @@ class OfferTestcase(TestSetUp):
         """defining function to check testcases for delete Offer data for authenticated user"""
         user = User.objects.get(username='aru')
         self.client.force_authenticate(user=user)
-        offer = Offer.objects.get(team_id=1)
+        offer = Offer.objects.get(teams=1)
         response = self.client.delete(reverse('offerdetail', args=[offer.id]))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
@@ -749,19 +749,19 @@ class OfferTestcase(TestSetUp):
 
     def test_anonymous_user_get_offer(self):
         """defining function to check testcases for get Offer data for unauthenticated user"""
-        offer = Offer.objects.get(team_id=1)
+        offer = Offer.objects.get(teams=1)
         response = self.client.get(reverse('offerdetail', args=[offer.id]))
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_anonymous_user_update_offer(self):
         """defining function to check testcases for update Offer data for unauthenticated user"""
-        offer = Offer.objects.get(team_id=1)
+        offer = Offer.objects.get(teams=1)
         response = self.client.patch(reverse('offerdetail', args=[offer.id]))
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_anonymous_user_delete_offer(self):
         """defining function to check testcases for delete Offer data for unauthenticated user"""
-        offer = Offer.objects.get(team_id=1)
+        offer = Offer.objects.get(teams=1)
         response = self.client.delete(reverse('offerdetail', args=[offer.id]))
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
