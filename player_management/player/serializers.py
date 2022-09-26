@@ -54,6 +54,7 @@ class CitySerializer(serializers.ModelSerializer):
         """Setting fields values onto the City model"""
         model = City
         fields = ('city', 'state_id')
+        depth = 3
 
 
 class StateSerializer(serializers.ModelSerializer):
@@ -62,6 +63,7 @@ class StateSerializer(serializers.ModelSerializer):
         """Setting fields values onto the State model"""
         model = State
         fields = ('name', 'country_id')
+        depth = 1
 
 
 class CountrySerializer(serializers.ModelSerializer):
@@ -99,6 +101,7 @@ class OfferSerializer(serializers.ModelSerializer):
                 'allow_empty': True
             }
         }
+        depth =1
 
 
 class PositionSerializer(serializers.ModelSerializer):
@@ -115,6 +118,7 @@ class InterestSerializer(serializers.ModelSerializer):
         """Setting fields values onto the Interest model"""
         model = Interest
         fields = '__all__'
+        depth =1
 
 
 class TwitterSerializer(serializers.ModelSerializer):
@@ -123,6 +127,7 @@ class TwitterSerializer(serializers.ModelSerializer):
         """Setting fields values onto the Twitter model"""
         model = Twitter
         fields = '__all__'
+        depth = 1
 
 
 class PlayerSerializer(serializers.ModelSerializer):
@@ -130,5 +135,5 @@ class PlayerSerializer(serializers.ModelSerializer):
     class Meta:
         """Setting fields values onto the Player model"""
         model = Player
-        fields = ('name','image','height','weight','country_id','class_id',
-            'position_id','city_id','school_id','commit_id','offer_id','twitter_id')
+        fields = '__all__'
+        depth = 1

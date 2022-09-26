@@ -20,9 +20,8 @@ class Command(BaseCommand):
             driver.get("https://247sports.com/college/football/recruiting/")
             driver.implicitly_wait(10)
             driver.find_element(By.XPATH, "/html/body/div[1]/section/header/div/div/nav/ul/li[7]/button/b[2]").click()
-            driver.find_element(By.XPATH,
-                                "/html/body/div[1]/section/header/div/div/nav/ul/li[7]/div/ul/li[1]/a").click()
-            for player_id in range(1, 3):
+            driver.find_element(By.XPATH, "/html/body/div[1]/section/header/div/div/nav/ul/li[7]/div/ul/li[1]/a").click()
+            for player_id in range(1, 1047):
                 player_data = Player.objects.get(id=player_id)
                 driver.find_element(By.XPATH,"/html/body/section[1]/section/div/section[2]/section/section/section/div/section[1]/form/input").send_keys(player_data.name)
                 time.sleep(5)

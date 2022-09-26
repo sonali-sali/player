@@ -6,6 +6,9 @@ import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 
 
+def main():
+    """defining main function"""
+    get_driver()
 def get_driver():
     """getting driver"""
     try:
@@ -179,4 +182,9 @@ def ranking_player_attributes(driver):
     except NoSuchElementException:
         pass
     return data
-get_driver()
+
+# Calling main function
+
+
+if __name__=="__main__":
+    main()

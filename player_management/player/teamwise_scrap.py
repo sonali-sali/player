@@ -6,6 +6,11 @@ from selenium.common.exceptions import NoSuchElementException, NoSuchFrameExcept
 import pandas as pd
 
 
+def main():
+    """defining main function"""
+    get_driver()
+
+
 def get_driver():
     """getting driver"""
     try:
@@ -29,7 +34,7 @@ def get_teamwise_url(driver):
         global team
         team = driver.find_elements(By.XPATH, "/html/body/section[1]/section/div/section/section/div/ul/li[*]/div[1]/div[3]/a")
         templist = []
-        for n in range(3,50):
+        for n in range(10,50):
             team = driver.find_elements(By.XPATH,"/html/body/section[1]/section/div/section/section/div/ul/li[*]/div[1]/div[3]/a")
             print(n)
             driver.implicitly_wait(10)
@@ -188,5 +193,8 @@ def get_teamwise_player_attributes(driver):
         except NoSuchElementException:
             pass
 
-#calling function
-get_driver()
+# Calling main function
+
+
+if __name__=="__main__":
+    main()

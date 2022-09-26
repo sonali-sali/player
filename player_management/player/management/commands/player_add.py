@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 import csv
 import ast
-from ...models import City,Class,Country,State,Team,Twitter,Player,Position,Offer,HighSchool
+from ...models import City,Class,Country,State,Team,Twitter,Player,Position,Offer,HighSchool,Interest
 
 
 class Command(BaseCommand):
@@ -57,21 +57,16 @@ class Command(BaseCommand):
                     commit = []
                     commit_team = []
                     try:
-                        try:
-                            for commit_status in interest_result:
-                                commit.append(commit_status)
-                                commit_team.append(interest_result[commit_status])
-                                for val in range(len(commit)):
-                                    team = Team.objects.filter(name=commit_team[val]).first()
-                                    Interest.objects.get_or_create(commited=commit[val], team_id=team,recruited_by=word[10])
-                        except Exception:
-                            pass
+                        for commit_status in interest_result:
+                            commit.append(commit_status)
+                            commit_team.append(interest_result[commit_status])
+                            for val in range(len(commit)):
+                                team = Team.objects.filter(name=commit_team[val]).first()
+                                Interest.objects.get_or_create(commited=commit[val], team_id=team,
+                                                               recruited_by=word[10])
 
-                    except Exception:
-                        try:
-                            Interest.objects.get_or_create(commited=word[9], recruited_by=word[10])
-                        except Exception:
-                            pass
+                    except:
+                        Interest.objects.get_or_create(commited=word[9], recruited_by=word[10])
 
                     # Inserting data of High_school Model
                     try:
@@ -100,7 +95,6 @@ class Command(BaseCommand):
                     Class.objects.get_or_create(class_year=word[7])
 
                     # Inserting data of Player Model
-
 
                     Player.objects.get_or_create(name=word[0],
                                                  image=word[1],
