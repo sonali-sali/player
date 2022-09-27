@@ -5,6 +5,7 @@ from ...models import Class, Interest, Position,Offer,HighSchool,City, State, Te
 from ...teamwise_scrap import get_teamwise_player_attributes
 import ast
 
+
 class Command(BaseCommand):
     """Command class to handle function for updating data of players"""
     help = 'import data'

@@ -34,7 +34,7 @@ def get_teamwise_url(driver):
         global team
         team = driver.find_elements(By.XPATH, "/html/body/section[1]/section/div/section/section/div/ul/li[*]/div[1]/div[3]/a")
         templist = []
-        for n in range(10,50):
+        for n in range(14,50):
             team = driver.find_elements(By.XPATH,"/html/body/section[1]/section/div/section/section/div/ul/li[*]/div[1]/div[3]/a")
             print(n)
             driver.implicitly_wait(10)
