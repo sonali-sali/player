@@ -4,6 +4,12 @@ from django.core.management.base import BaseCommand
 from ...models import Class, Interest, Position,Offer,HighSchool,City, State, Team, Player
 from ...teamwise_scrap import get_teamwise_player_attributes
 import ast
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
 
 
 class Command(BaseCommand):
@@ -22,7 +28,7 @@ class Command(BaseCommand):
             driver.implicitly_wait(10)
             driver.find_element(By.XPATH, "/html/body/div[1]/section/header/div/div/nav/ul/li[7]/button/b[2]").click()
             driver.find_element(By.XPATH, "/html/body/div[1]/section/header/div/div/nav/ul/li[7]/div/ul/li[1]/a").click()
-            for player_id in range(1, 1047):
+            for player_id in range(1, 10):
                 player_data = Player.objects.get(id=player_id)
                 driver.find_element(By.XPATH,"/html/body/section[1]/section/div/section[2]/section/section/section/div/section[1]/form/input").send_keys(player_data.name)
                 time.sleep(5)

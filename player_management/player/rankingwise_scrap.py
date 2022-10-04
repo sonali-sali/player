@@ -9,6 +9,8 @@ from selenium.common.exceptions import NoSuchElementException
 def main():
     """defining main function"""
     get_driver()
+
+
 def get_driver():
     """getting driver"""
     try:
