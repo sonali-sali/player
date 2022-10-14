@@ -6,6 +6,7 @@ from .models import Team,State,City,Interest,Player,Position,Class,Country,HighS
 from rest_framework.permissions import AllowAny
 from rest_framework import generics
 from django.contrib.auth.models import User
+from rest_framework import viewsets
 
 
 class RegisterAPI(generics.GenericAPIView):
@@ -38,145 +39,75 @@ class LoginAPI(generics.GenericAPIView):
             "token": AuthToken.objects.create(user)[1],})
 
 
-class UserListCreate(generics.ListCreateAPIView):
-    """User List and create API"""
+class UserView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing User Details """
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class UserDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Team retrieve, update and delete API"""
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class TeamList(generics.ListCreateAPIView):
-    """Team List and create API"""
+class TeamView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing Team Details """
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
 
 
-class TeamDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Team retrieve, update and delete API"""
-    queryset = Team.objects.all()
-    serializer_class = TeamSerializer
-
-
-class CityList(generics.ListCreateAPIView):
-    """City List and create API"""
+class CityView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing City Details """
     queryset = City.objects.all()
     serializer_class = CitySerializer
 
 
-class CityDetail(generics.RetrieveUpdateDestroyAPIView):
-    """State retrieve, update and delete API"""
-    queryset = City.objects.all()
-    serializer_class = CitySerializer
-
-
-class StateList(generics.ListCreateAPIView):
-    """State List and create API"""
+class StateView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing State Details """
     queryset = State.objects.all()
     serializer_class = StateSerializer
 
 
-class StateDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Country retrieve, update and delete API"""
-    queryset = State.objects.all()
-    serializer_class = StateSerializer
-
-
-class CountryList(generics.ListCreateAPIView):
-    """Country List and create API"""
+class CountryView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing User Details """
     queryset = State.objects.all()
     serializer_class = CountrySerializer
 
 
-class CountryDetail(generics.RetrieveUpdateDestroyAPIView):
-    """City retrieve, update and delete API"""
-    queryset = Country.objects.all()
-    serializer_class = CountrySerializer
-
-
-class HighschoolList(generics.ListCreateAPIView):
-    """Highschool List and create API"""
+class HighschoolView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing Highschool Details """
     queryset = HighSchool.objects.all()
     serializer_class = HighschoolSerializer
 
 
-class HighschoolDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Highschool retrieve, update and delete API"""
-    queryset = HighSchool.objects.all()
-    serializer_class = HighschoolSerializer
-
-
-class ClassList(generics.ListCreateAPIView):
-    """Class List and create API"""
+class ClassView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing Class Details """
     queryset = Class.objects.all()
     serializer_class = ClassSerializer
 
 
-class ClassDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Class retrieve, update and delete API"""
-    queryset = Class.objects.all()
-    serializer_class = ClassSerializer
-
-
-class OfferList(generics.ListCreateAPIView):
-    """Offer List and create API"""
+class OfferView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing Offer Details """
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
 
 
-class OfferDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Offer retrieve, update and delete API"""
-    queryset = Offer.objects.all()
-    serializer_class = OfferSerializer
-
-
-class PositionList(generics.ListCreateAPIView):
-    """Position List and create API"""
+class PositionView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing Position Details """
     queryset = Position.objects.all()
     serializer_class = PositionSerializer
 
 
-class PositionDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Position retrieve, update and delete API"""
-    queryset = Position.objects.all()
-    serializer_class = PositionSerializer
-
-
-class InterestList(generics.ListCreateAPIView):
-    """Interest List and create API"""
+class InterestView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing Interest Details """
     queryset = Interest.objects.all()
     serializer_class = InterestSerializer
 
 
-class InterestDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Interest retrieve, update and delete API"""
-    queryset = Interest.objects.all()
-    serializer_class = InterestSerializer
 
-
-class TwitterList(generics.ListCreateAPIView):
-    """Twitter List and create API"""
+class TwitterView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing Twitter Details """
     queryset = Twitter.objects.all()
     serializer_class = TwitterSerializer
 
 
-class TwitterDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Twitter retrieve, update and delete API"""
-    queryset = Twitter.objects.all()
-    serializer_class = TwitterSerializer
-
-
-class PlayerList(generics.ListCreateAPIView):
-    """Player List and create API"""
+class PlayerView(viewsets.ModelViewSet):
+    """ A simple ViewSet for viewing and editing player Details """
     queryset = Player.objects.all()
     serializer_class = PlayerSerializer
 
-
-class PlayerDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Player retrieve, update and delete API"""
-    queryset = Player.objects.all()
-    serializer_class = PlayerSerializer
